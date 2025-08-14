@@ -1412,6 +1412,54 @@ hap_char_t *hap_char_lock_control_point_create(hap_tlv8_val_t *lock_control_poin
     return hc;
 }
 
+/* Char: Hardware Finish */
+hap_char_t *hap_char_hardware_finish_create(hap_tlv8_val_t *hardware_finish)
+{
+    hap_char_t *hc = hap_char_tlv8_create(HAP_CHAR_UUID_HARDWARE_FINISH,
+                                           HAP_CHAR_PERM_PR , hardware_finish);
+    if (!hc) {
+        return NULL;
+    }
+
+    return hc;
+}
+
+/* Char: NFC Access Control Point */
+hap_char_t *hap_char_nfc_access_control_point_create(hap_tlv8_val_t *nfc_access_control_point)
+{
+    hap_char_t *hc = hap_char_tlv8_create(HAP_CHAR_UUID_NFC_ACCESS_CONTROL_POINT,
+                                           HAP_CHAR_PERM_PR | HAP_CHAR_PERM_PW | HAP_CHAR_PERM_WR , nfc_access_control_point);
+    if (!hc) {
+        return NULL;
+    }
+
+    return hc;
+}
+
+/* Char: NFC Access Supported Configuration */
+hap_char_t *hap_char_nfc_access_supported_conf_create(hap_tlv8_val_t *nfc_access_supported_conf)
+{
+    hap_char_t *hc = hap_char_tlv8_create(HAP_CHAR_UUID_NFC_ACCESS_SUPPORTED_CONF,
+                                           HAP_CHAR_PERM_PR , nfc_access_supported_conf);
+    if (!hc) {
+        return NULL;
+    }
+
+    return hc;
+}
+
+/* Char: Configuration State */
+hap_char_t *hap_char_configuration_state_create(uint16_t configuration_state)
+{
+    hap_char_t *hc = hap_char_uint16_create(HAP_CHAR_UUID_CONFIGURATION_STATE,
+                                           HAP_CHAR_PERM_PR | HAP_CHAR_PERM_EV , configuration_state);
+    if (!hc) {
+        return NULL;
+    }
+
+    return hc;
+}
+
 /* Char: Lock Last Known Action */
 hap_char_t *hap_char_lock_last_known_action_create(uint8_t lock_last_known_action)
 {

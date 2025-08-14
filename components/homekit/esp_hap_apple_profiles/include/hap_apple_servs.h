@@ -44,6 +44,7 @@ extern "C" {
 #define HAP_SERV_UUID_LIGHTBULB                     "43"
 #define HAP_SERV_UUID_LOCK_MANAGEMENT               "44"
 #define HAP_SERV_UUID_LOCK_MECHANISM                "45"
+#define HAP_SERV_UUID_NFC_ACCESS                    "266"
 #define HAP_SERV_UUID_SWITCH                        "49"
 #define HAP_SERV_UUID_OUTLET                        "47"
 #define HAP_SERV_UUID_THERMOSTAT                    "4A"
@@ -150,6 +151,20 @@ hap_serv_t *hap_serv_lightbulb_create(bool on);
  * @return NULL on failure
  */
 hap_serv_t *hap_serv_lock_management_create(hap_tlv8_val_t *lock_control_point, char * version);
+
+/** Create NFC Access Service
+ *
+ * This API will create the NFC Access Service with the mandatory
+ * characteristics as per the HAP Specs.
+ *
+ * @param[in] confState UINT16 Configuration State
+ * @param[in] nfc_access_control_point Accepts data from TLV8 commands
+ * @param[in] nfc_access_supported_conf NFC Access TLV8 Supported Confguration
+ *
+ * @return Pointer to the service object on success
+ * @return NULL on failure
+ */
+hap_serv_t *hap_serv_nfc_access_create(uint16_t confState, hap_tlv8_val_t *nfc_access_control_point, hap_tlv8_val_t *nfc_access_supported_conf);
 
 /** Create Lock Mechanism Service
  *

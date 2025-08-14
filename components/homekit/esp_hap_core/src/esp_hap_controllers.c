@@ -145,6 +145,11 @@ hap_ctrl_data_t *hap_get_controller(char *ctrl_id)
 	return NULL;
 }
 
+hap_ctrl_data_t *hap_get_controller_data(char *ctrl_id)
+{
+    return hap_get_controller(ctrl_id);
+}
+
 void hap_erase_controller_info()
 {
     hap_keystore_delete_namespace(HAP_KEYSTORE_NAMESPACE_CTRL);

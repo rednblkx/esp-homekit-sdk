@@ -29,6 +29,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <esp_event.h>
+#include "../src/priv_includes/esp_hap_controllers.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -251,6 +252,9 @@ typedef struct {
 	char *fw_rev;
     /** Hardware revision number in format x[.y[.z]] (Optional. Can be NULL )*/
 	char *hw_rev;
+  
+    /** Hardware Finish of the HomeKey in TLV8 data format (Optional. Can be NULL )*/
+	hap_tlv8_val_t *hw_finish;
     /** HAP Protocol version supported by the accessory. Should be set to "1.1"
      * @note The value set here will currently be ignored and assumed to be 1.1
      * as it is the only protocol version currently supported.
@@ -1561,6 +1565,18 @@ void hap_register_event_handler(hap_event_handler_t handler);
  * @return Number of paired controllers
  */
 int hap_get_paired_controller_count();
+
+
+/** Get Paired controller data
+ *
+ * This API can be used to get the ID and LTPK of the controller.
+ * Thi can be used only after hap_init().
+ *
+ * @param[in] ctrl_id ID of the controller.
+ *
+ * @return Controller Data
+ */
+hap_ctrl_data_t* hap_get_controller_data(char* ctrl_id);
 
 /*
  * Enable Simple HTTP Debugging

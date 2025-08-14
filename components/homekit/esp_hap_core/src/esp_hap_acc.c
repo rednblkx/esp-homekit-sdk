@@ -102,7 +102,11 @@ hap_acc_t *hap_acc_create(hap_acc_cfg_t *acc_cfg)
     if (acc_cfg->hw_rev) {
         ret |= hap_serv_add_char(hs, hap_char_string_create(HAP_CHAR_UUID_HARDWARE_REVISION, HAP_CHAR_PERM_PR, acc_cfg->hw_rev));
     }
-    
+
+    if (acc_cfg->hw_finish) {
+        ret |= hap_serv_add_char(hs, hap_char_hardware_finish_create(acc_cfg->hw_finish)) != HAP_SUCCESS;
+    }
+
     if (ret) {
         goto acc_create_fail;
     }

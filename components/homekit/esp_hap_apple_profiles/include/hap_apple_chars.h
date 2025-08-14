@@ -54,6 +54,10 @@ extern "C" {
 #define HAP_CHAR_UUID_LOCK_LAST_KNOWN_ACTION                    "1C"
 #define HAP_CHAR_UUID_LOCK_MANAGEMENT_AUTO_SECURITY_TIMEOUT     "1A"
 #define HAP_CHAR_UUID_LOCK_TARGET_STATE                         "1E"
+#define HAP_CHAR_UUID_HARDWARE_FINISH                           "26C"
+#define HAP_CHAR_UUID_CONFIGURATION_STATE                       "263"
+#define HAP_CHAR_UUID_NFC_ACCESS_CONTROL_POINT                  "264"
+#define HAP_CHAR_UUID_NFC_ACCESS_SUPPORTED_CONF                 "265"
 #define HAP_CHAR_UUID_LOGS                                      "1F"
 #define HAP_CHAR_UUID_MANUFACTURER                              "20"
 #define HAP_CHAR_UUID_MODEL                                     "21"
@@ -1354,6 +1358,63 @@ hap_char_t *hap_char_administrator_only_access_create(bool administrator_only_ac
  * @return NULL on failure
  */
 hap_char_t *hap_char_lock_control_point_create(hap_tlv8_val_t *lock_control_point);
+
+
+/** Hardware Finish Characteristic
+ *
+ * This API creates the Hardware Finish characteristic object with other
+ metadata
+ * (format, constraints, permissions, etc.) set as per the HAP Specs
+ *
+ * @param[in] hardware_finish  Initial value of Hardware Finish characteristic
+ *
+ * @return Pointer to the characteristic object on success
+ * @return NULL on failure
+ */
+
+hap_char_t *hap_char_hardware_finish_create(hap_tlv8_val_t *hardware_finish);
+
+/** NFC Access Control Point Characteristic
+ *
+ * This API creates the NFC Access Control Point characteristic object with
+ other metadata
+ * (format, constraints, permissions, etc.) set as per the HAP Specs
+ *
+ * @param[in] nfc_access_control_point  Initial value of NFC Access Control
+ Point characteristic
+ *
+ * @return Pointer to the characteristic object on success
+ * @return NULL on failure
+ */
+
+hap_char_t *hap_char_nfc_access_control_point_create(hap_tlv8_val_t *nfc_access_control_point);
+
+/** NFC Access Supported Configuration Characteristic
+ *
+ * This API creates the NFC Access Supported Configuration characteristic object
+ with other metadata
+ * (format, constraints, permissions, etc.) set as per the HAP Specs
+ *
+ * @param[in] nfc_access_suppported_conf  Initial value of NFC Access Supported
+ Configuration characteristic
+ *
+ * @return Pointer to the characteristic object on success
+ * @return NULL on failure
+ */
+
+hap_char_t *hap_char_nfc_access_supported_conf_create(hap_tlv8_val_t *nfc_access_supported_conf);
+
+/** Configuration State Characteristic
+ *
+ * This API creates the Configuration State characteristic object with other metadata
+ * (format, constraints, permissions, etc.) set as per the HAP Specs
+ *
+ * @param[in] configuration_state  Initial value of Configuration State characteristic
+ *
+ * @return Pointer to the characteristic object on success
+ * @return NULL on failure
+ */
+hap_char_t *hap_char_configuration_state_create(uint16_t configuration_state);
 
 /** Lock Last Known Action Characteristic
  *
