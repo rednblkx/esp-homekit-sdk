@@ -64,22 +64,10 @@ int hap_mdns_serv_stop(hap_mdns_handle_t *handle)
 
 int hap_mdns_init()
 {
-    int ret = HAP_SUCCESS;
-    if (!mdns_init_done) {
-        ret = mdns_init();
-        if (ret == ESP_OK) {
-            mdns_hostname_set("MyHost");
-            mdns_init_done = true;
-            ESP_MFI_DEBUG(ESP_MFI_DEBUG_INFO, "mDNS initialised");
-            return HAP_SUCCESS;
-        }
-    }
-    return HAP_FAIL;
+    return HAP_SUCCESS;
 }
 
 int hap_mdns_deinit()
 {
-    mdns_free();
-    mdns_init_done = false;
     return HAP_SUCCESS;
 }
